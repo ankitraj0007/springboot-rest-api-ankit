@@ -12,6 +12,7 @@
 	<artifactId>springboot-rest-api-ankit</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springboot-rest-api-ankit</name>
+	<packaging>war</packaging>
 	<description>Demo project for Spring Boot REST API</description>
 	<properties>
 		<java.version>17</java.version>
