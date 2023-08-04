@@ -20,7 +20,8 @@ admin/admin
 # tomcat  
 port="5050"  
 C:\Program Files\Apache Software Foundation\Tomcat 10.1\conf  
-under <tomcat-users>  
+under  
+<tomcat-users>  
 	<role rolename="manager-gui" />  
 	<role rolename="manager-script" />  
 <user username="admin" password="admin" roles="manager-gui,manager-script" />  
