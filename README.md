@@ -1,5 +1,8 @@
 # springboot-rest-api-ankit
  simple springboot rest api
+ 
+# https & ssl
+ comment application.yml file and deploy to enable secure connection using https on port 7777
 
 # setup jenkins
  download and setup jenkins on port 9090
