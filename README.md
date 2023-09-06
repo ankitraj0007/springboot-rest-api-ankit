@@ -2,7 +2,9 @@
  simple springboot rest api
  
 # https & ssl
- comment application.yml file and deploy to enable secure connection using https on port 7777
+ comment application.yml file and deploy to enable secure connection using https on port 7777  
+ command to create key:  
+ keytool -genkey -alias spring-https -storetype JKS -keyalg RSA -keysize 2048 -validity 365 -keystore learnwithankit.jks  
 
 # setup jenkins
  download and setup jenkins on port 9090
