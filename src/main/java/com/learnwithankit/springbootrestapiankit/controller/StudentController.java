@@ -1,25 +1,29 @@
 package com.learnwithankit.springbootrestapiankit.controller;
 
 import com.learnwithankit.springbootrestapiankit.bean.Student;
+import org.apache.el.util.ReflectionUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("students")
+@RequestMapping("student")
 public class StudentController {
 
     //http://localhost:8080/student
-    @GetMapping("student")
+    @GetMapping()
     public Student getStudent(){
         return new Student(1,"ankit", "raj");
     }
 
     //using response entity
-    @GetMapping("student/responseEntity")
+    @GetMapping("responseEntity")
     public ResponseEntity<Student> getStudentResponseEntity(){
         Student student = new Student(1,"ankit", "raj");
 //        return new ResponseEntity<>(student, HttpStatus.OK);
@@ -27,7 +31,7 @@ public class StudentController {
         return ResponseEntity.ok().header("customHeader","ankit").body(student);//with header
     }
 
-    @GetMapping()
+    @GetMapping("all")
     public List<Student> getStudents(){
         List<Student> students = new ArrayList<>();
         students.add(new Student(1,"ankit", "raj"));
@@ -60,9 +64,24 @@ public class StudentController {
     }
 
     //update
-    @PutMapping("{id}/update")
-    public Student updateStudent(@RequestBody Student student, @PathVariable int id){
+    @PutMapping("update")
+    public Student updateStudent(@RequestBody Student student){
         System.out.println(student);
+        return student;
+    }
+
+    //partial update
+    @PatchMapping("{id}/patch")
+    public Student patchStudent(@PathVariable int id, @RequestBody Map<String,String> fields){
+        Student student = new Student(id,"ankit", "raj");
+        System.out.println(student);
+
+        fields.forEach((key, value) -> {
+            Field field = ReflectionUtils.findField(Student.class, key);
+            field.setAccessible(true);
+            ReflectionUtils.setField(field, student, value);
+        });
+
         return student;
     }
 
