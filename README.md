@@ -5,6 +5,8 @@
  comment application.yml file and deploy to enable secure connection using https on port 7777  
  command to create key:  
  keytool -genkey -alias spring-https -storetype JKS -keyalg RSA -keysize 2048 -validity 365 -keystore learnwithankit.jks  
+ copy key to resources  
+ ref: https://www.youtube.com/watch?v=1jCM4jKV68U  
 
 # setup jenkins
  download and setup jenkins on port 9090
